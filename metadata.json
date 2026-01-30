@@ -1,0 +1,5 @@
+{
+  "name": "Gemini-Man: AI Retro Arcade",
+  "description": "A high-fidelity Pac-Man clone with dynamic AI commentary and strategy tips powered by Gemini. Features smooth grid-based movement, ghost AI behaviors, and classic arcade aesthetics.",
+  "requestFramePermissions": []
+}
