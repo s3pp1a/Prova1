@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "electron": "electron .",
-    "electron:build": "npm run build && electron-builder --win"
+    "electron:build": "npm run build && electron-builder --win --publish never"
   },
   "dependencies": {
     "react-dom": "^19.2.4",
