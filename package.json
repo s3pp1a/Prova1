@@ -3,10 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+    "main": "electron.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "electron": "electron .",
+    "electron:build": "npm run build && electron-builder --win"
   },
   "dependencies": {
     "react-dom": "^19.2.4",
@@ -16,7 +19,25 @@
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
-    "typescript": "~5.8.2",
+    "typescript": "~5.8.2",,
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
     "vite": "^6.2.0"
+  },
+  "build": {
+    "appId": "com.s3pp1a.geminiman",
+    "productName": "Gemini Man",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron.js",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "dist/favicon.ico"
+    }
   }
 }
