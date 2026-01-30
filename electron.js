@@ -13,8 +13,14 @@ function createWindow() {
   });
 
   // Carica l'app da dist
-  mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));
-
+  // In produzione (app impacchettata), i file sono nella root
+  // In sviluppo, sono in dist/
+  const isDev = !app.isPackaged;
+  const indexPath = isDev 
+    ? path.join(__dirname, 'dist', 'index.html')
+    : path.join(__dirname, 'index.html');
+  
+  mainWindow.loadFile(indexPath);
   // Apri DevTools in sviluppo (commentare in produzione)
   // mainWindow.webContents.openDevTools();
 }
