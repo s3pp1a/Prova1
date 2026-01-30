@@ -15,14 +15,19 @@ function createWindow() {
   // Carica l'app da dist
   // In produzione (app impacchettata), i file sono nella root
   // In sviluppo, sono in dist/
-  const isDev = !app.isPackaged;
-  const indexPath = isDev 
-    ? path.join(__dirname, 'dist', 'index.html')
-    : path.join(__dirname, 'index.html');
-  
+    // Carica l'app
+  const indexPath = path.join(__dirname, 'dist', 'index.html');
   mainWindow.loadFile(indexPath);
+  
+  // Log per debugging
+  console.log('Caricamento da:', indexPath);
+  
+  // Gestione errori di caricamento
+  mainWindow.webContents.on('did-fail-load', (event, errorCode, errorDescription) => {
+    console.error('Errore di caricamento:', errorCode, errorDescription);
+  });
   // Apri DevTools in sviluppo (commentare in produzione)
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
